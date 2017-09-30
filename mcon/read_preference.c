@@ -336,11 +336,11 @@ mcon_collection* mongo_find_candidate_servers(mongo_con_manager *manager, mongo_
 	mongo_manager_log(manager, MLOG_RS, MLOG_FINE, "finding candidate servers");
 	all = mongo_find_all_candidate_servers(manager, rp);
 
-	if (servers->options.con_type == MONGO_CON_TYPE_REPLSET) {
-		filtered = mongo_filter_candidates_by_replicaset_name(manager, all, servers);
-	} else {
-		filtered = mongo_filter_candidates_by_seed(manager, all, servers);
-	}
+	// if (servers->options.con_type == MONGO_CON_TYPE_REPLSET) {
+	// 	filtered = mongo_filter_candidates_by_replicaset_name(manager, all, servers);
+	// } else {
+	filtered = mongo_filter_candidates_by_seed(manager, all, servers);
+	// }
 	mcon_collection_free(all);
 	all = filtered;
 
